@@ -24,5 +24,13 @@
   },
   "bugs": {
     "url": "https://github.com/jonathanasquier/stripe-pdf-invoice/issues"
-  }
+  },
+  "readme": "# Stripe PDF Invoice #\n\n## Render ##\n\n![ScreenShot](/invoice.jpg)\n\n## Install ##\n\n```\n    npm install stripe-pdf-invoice\n```\n\nInstall the [wkhtmltopdf exec](http://wkhtmltopdf.org/downloads.html)\n\n## Usage ##\n\n### Generate invoice in a file ####\n\n```\nvar fs = require('fs');\nvar pdfInvoice = require('stripe-pdf-invoice')('STRIPE_KEY', {/*options...*/});\nvar invoiceId = 'STRIPE_INVOICE_ID';\n\npdfInvoice.generate(invoiceId, {/*options...*/}, function(error, pdfname, stream){\n    stream.pipe(fs.createWriteStream(pdfname));\n});\n```\n\n### Use with Express ####\n\n```\nvar express = require('express');\nvar app = express();\nvar pdfInvoice = require('stripe-pdf-invoice')('STRIPE_KEY', {/*options...*/});\nvar invoiceId = 'STRIPE_INVOICE_ID';\n\napp.get('/', function(req, res) {\n    res.set('content-type', 'application/pdf; charset=utf-8');\n    pdfInvoice.generate(invoiceId, {/*options...*/}, function(error, pdfname, stream){\n        //Force download\n        //res.set('Content-Disposition', 'attachment; filename=' + pdfname + '.pdf');\n        stream.pipe(res);\n    });\n});\n```\n\n### Options ####\n\n```\nnumber (Number)\ncurrency_position_before (Bool)\ncurrency_symbol (String)\ndate_format (String)\ndue_days (Number)\ncolor (Number)\n\ncompany_name (String)\ncompany_logo (String)\ncompany_address (String)\ncompany_zipcode (String)\ncompany_city (String)\ncompany_country (String)\ncompany_siret (String)\ncompany_vat_number (String)\n\nclient_company_name (String)\nclient_company_address (String)\nclient_company_zipcode (String)\nclient_company_city (String)\nclient_company_country (String)\n\nlabel_invoice (String)\nlabel_invoice_to (String)\nlabel_invoice_by (String)\nlabel_due_on (String)\nlabel_invoice_for (String)\nlabel_description (String)\nlabel_unit (String)\nlabel_price (String)\nlabel_amount (String)\nlabel_subtotal (String)\nlabel_total (String)\nlabel_vat (String)\nlabel_invoice_by (String)\nlabel_invoice_date (String)\nlabel_company_siret (String)\nlabel_company_vat_number (String)\nlabel_invoice_number (String)\nlabel_reference_number (String)\nlabel_invoice_due_date (String)\n\n```\n\n## TODO ##\n\n    Remote logo and logo type test (mmmagic)\n",
+  "readmeFilename": "README.md",
+  "_id": "stripe-pdf-invoice@1.0.8",
+  "dist": {
+    "shasum": "9d74aa1865e081c4624436c796c4b6c07cd09c52"
+  },
+  "_from": "stripe-pdf-invoice@",
+  "_resolved": "https://registry.npmjs.org/stripe-pdf-invoice/-/stripe-pdf-invoice-1.0.8.tgz"
 }

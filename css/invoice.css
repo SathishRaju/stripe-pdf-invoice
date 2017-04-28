@@ -68,8 +68,9 @@ layout {
 
 .component-title {
     font-size: 13px;
-    color: #BDC3C7;
+    color: #000000;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 .address {
