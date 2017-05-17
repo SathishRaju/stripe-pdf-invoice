@@ -59,8 +59,8 @@ StripePdfInvoice.prototype.generate = function(invoiceId, data, callback) {
             invoice.label_invoice_date = invoice.label_invoice_date || 'invoice date';
             //invoice.label_company_siret = invoice.label_company_siret || 'Company SIRET';
             invoice.label_company_vat_number = invoice.label_company_vat_number || 'VAT #';
-            if(invoice.company_vat_number){
-                invoice.company_vat_number = invoice.label_company_vat_number + " : " +invoice.company_vat_number;
+            if(invoice.client_company_vat_number){
+                invoice.client_company_vat_number = invoice.label_company_vat_number + " : " +invoice.client_company_vat_number;
             }
             invoice.label_invoice_number = invoice.label_invoice_number || 'invoice number';
             //invoice.label_reference_number = invoice.label_reference_number || 'ref N°';
